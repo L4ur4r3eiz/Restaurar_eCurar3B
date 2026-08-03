@@ -1,0 +1,135 @@
+/* ============================================================
+   RESTAURAR E CURAR — animations.css
+   Camada de assinatura, microinterações e keyframes.
+   Todas as animações usam apenas transform / opacity.
+============================================================ */
+
+/* ---------- Cursor personalizado ---------- */
+html.has-fine-pointer, html.has-fine-pointer body{ cursor:none; }
+html.has-fine-pointer a, html.has-fine-pointer button,
+html.has-fine-pointer input, html.has-fine-pointer textarea,
+html.has-fine-pointer select{ cursor:none; }
+
+.cursor-dot, .cursor-ring{
+  position:fixed; top:0; left:0; pointer-events:none; z-index:299;
+  border-radius:50%; transform:translate(-50%,-50%);
+  display:none;
+}
+html.has-fine-pointer .cursor-dot, html.has-fine-pointer .cursor-ring{ display:block; }
+.cursor-dot{ width:6px; height:6px; background:var(--sky-deep); transition:opacity .2s var(--ease); }
+.cursor-ring{
+  width:34px; height:34px; border:1.5px solid rgba(29,62,88,0.35);
+  transition:width .25s var(--ease), height .25s var(--ease), border-color .25s var(--ease), opacity .25s var(--ease);
+}
+.cursor-ring.is-active{ width:56px; height:56px; border-color:var(--sky); background:rgba(61,110,147,0.06); }
+.cursor-ring.is-hidden, .cursor-dot.is-hidden{ opacity:0; }
+
+/* ---------- Grão de textura ---------- */
+.grain-overlay{
+  position:fixed; inset:-10%; z-index:2; pointer-events:none;
+  opacity:.035; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size:170px;
+}
+
+/* ---------- Barra de progresso de scroll ---------- */
+.scroll-progress{
+  position:fixed; top:0; left:0; height:2.5px; width:0%;
+  background:linear-gradient(90deg, var(--sky), var(--moss));
+  z-index:300; transition:width .08s linear;
+}
+
+/* ---------- Marquee ---------- */
+.marquee{
+  position:relative; overflow:hidden;
+  border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);
+  padding-block:.9rem; background:var(--paper);
+}
+.marquee-track{
+  display:flex; width:max-content; gap:0;
+  animation:marqueeScroll 34s linear infinite;
+}
+.marquee:hover .marquee-track{ animation-play-state:paused; }
+.marquee-item{
+  display:flex; align-items:center; gap:2.2rem; padding-inline:1.1rem;
+  font-family:var(--font-display); font-weight:600; font-size:.92rem;
+  letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint);
+  white-space:nowrap;
+}
+.marquee-item span.dotsep{ width:5px; height:5px; border-radius:50%; background:var(--moss); flex:none; }
+@keyframes marqueeScroll{ from{ transform:translateX(0);} to{ transform:translateX(-50%);} }
+
+/* ---------- Split-text reveal (título hero) ---------- */
+.split-line{ display:inline-block; overflow:hidden; vertical-align:top; }
+.split-word{
+  display:inline-block; transform:translateY(115%);
+  transition:transform .85s var(--ease);
+}
+.split-ready .split-word{ transform:translateY(0); }
+
+/* ---------- Quote word-by-word ---------- */
+.qword{ opacity:.18; transition:opacity .5s var(--ease); }
+.qword.is-visible{ opacity:1; }
+
+/* ---------- Ghost word hero ---------- */
+.ghost-word{
+  position:absolute; z-index:0; pointer-events:none; user-select:none;
+  font-family:var(--font-display); font-weight:800;
+  font-size:clamp(6rem, 16vw, 15rem);
+  letter-spacing:-0.03em;
+  color:transparent; -webkit-text-stroke:1px rgba(16,32,46,0.08);
+  white-space:nowrap;
+  top:6%; left:-2%;
+}
+
+/* ---------- Botões magnéticos ---------- */
+.magnetic{ will-change:transform; }
+
+/* ---------- Reveal on scroll (fade + translate) ---------- */
+.reveal{
+  opacity:0; transform:translateY(22px);
+  transition:opacity var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
+}
+.reveal.is-visible{ opacity:1; transform:translateY(0); }
+.reveal-group .reveal:nth-child(1){ transition-delay:.02s; }
+.reveal-group .reveal:nth-child(2){ transition-delay:.10s; }
+.reveal-group .reveal:nth-child(3){ transition-delay:.18s; }
+.reveal-group .reveal:nth-child(4){ transition-delay:.26s; }
+
+/* ---------- Reveal específico para imagens (suave) ---------- */
+.reveal-img{
+  opacity:0; transform:scale(1.03);
+  transition:opacity 1s var(--ease), transform 1.2s var(--ease);
+}
+.reveal-img.is-visible{ opacity:1; transform:scale(1); }
+
+/* ---------- Ripple discreto nos botões ---------- */
+.ripple{
+  position:absolute; border-radius:50%;
+  transform:scale(0); pointer-events:none;
+  background:currentColor; opacity:.18;
+  animation:rippleOut .6s var(--ease) forwards;
+}
+@keyframes rippleOut{
+  to{ transform:scale(2.4); opacity:0; }
+}
+
+/* ---------- Keyframes compartilhados ---------- */
+@keyframes breathe{
+  0%,100%{ transform:scale(1) translateY(0); opacity:.75; }
+  50%{ transform:scale(1.08) translateY(-1.5%); opacity:.95; }
+}
+@keyframes float{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-8px);} }
+@keyframes cardIn{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:translateY(0);} }
+.mural-card.is-new{ animation:cardIn .5s var(--ease); border-color:var(--sky); }
+
+/* ---------- Preferência de movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{
+    animation-duration:.001ms !important; animation-iteration-count:1 !important;
+    transition-duration:.001ms !important; scroll-behavior:auto !important;
+  }
+  .reveal, .reveal-img{ opacity:1; transform:none; }
+  .marquee-track{ animation:none; }
+}

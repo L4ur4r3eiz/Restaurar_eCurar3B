@@ -1,0 +1,43 @@
+/* ============================================================
+   RESTAURAR E CURAR — responsive.css
+   Ajustes para Tablet e Mobile.
+============================================================ */
+
+@media (max-width:980px){
+  .hero-grid{ grid-template-columns:1fr; }
+  .hero-visual{ max-width:340px; order:-1; }
+  .about-layout{ grid-template-columns:1fr; }
+  .about-figure{ max-width:460px; }
+  .about-figure img{ aspect-ratio:16/10; }
+  .pillars{ grid-template-columns:1fr; gap:2rem; }
+  .media-quote{ grid-template-columns:1fr; }
+  .grid-3{ grid-template-columns:1fr; }
+  .grid-4{ grid-template-columns:repeat(2,1fr); }
+  .grid-2{ grid-template-columns:1fr; }
+  .steps-grid{ grid-template-columns:1fr; }
+  .step:not(:last-child)::after{ display:none; }
+  .builder{ grid-template-columns:1fr; }
+  .builder-form{ border-right:none; border-bottom:1px solid var(--line); }
+  .footer-grid{ grid-template-columns:1fr; gap:2rem; }
+  .mural-grid{ column-count:1; }
+  .site-header.scrolled .nav-row{ max-width:none; }
+}
+
+@media (max-width:760px){
+  .nav-links{ display:none; }
+  .nav-toggle{ display:flex; }
+  .field-grid{ grid-template-columns:1fr; }
+  .mural-form{ grid-template-columns:1fr; }
+  .map-head{ flex-direction:column; align-items:flex-start; }
+  /* No mobile o header vira uma faixa limpa em vez de pílula estreita */
+  .site-header.scrolled .nav-row{
+    border-radius:var(--radius-md);
+    padding:.55rem .9rem;
+  }
+}
+
+@media (max-width:560px){
+  .grid-4{ grid-template-columns:1fr; }
+  .hero-badge{ display:none; }
+  .gallery-item{ width:78vw; }
+}

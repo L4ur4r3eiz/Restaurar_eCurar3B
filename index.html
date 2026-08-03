@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1D3E58">
+  <title>Restaurar e Curar | TCC de Impacto Social</title>
+  <meta name="description"
+    content="Restaurar e Curar — acolhimento, conscientização e caminhos práticos para a reintegração de pessoas em recuperação da dependência química. Trabalho de Conclusão de Curso, Etec MCM.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Fraunces:ital,wght@0,500;1,400;1,500&display=swap"
+    rel="stylesheet">
+
+  <!-- Leaflet (mapa da rede de apoio) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+  <!-- Estilos do projeto -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="shortcut icon" href="assets/images/Logotipo Restaurar e curar.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <!-- ============================================================
+     HEADER
+============================================================ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-row">
+      <a href="#" class="logo" aria-label="Restaurar e Curar, página inicial">
+        <img
+          src="assets/images/Logotipo_Iniciais_do_Nome_Profissional_Minimalista_em_Preto_e_Branco-removebg-preview.png"
+          alt="Logo Restaurar e Curar" class="logo-mark">
+        <span>Restaurar e Curar</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#trabalho">Mercado</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#ajuda">Onde Buscar Ajuda</a>
+        <a href="#ferramentas">Ferramentas</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#ajuda" class="btn btn-primary magnetic" id="headerCtaWide">Buscar Ajuda</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false"
+          aria-controls="mobileNav">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Navegação móvel">
+    <a href="#sobre">Sobre</a>
+    <a href="#trabalho">Mercado</a>
+    <a href="#cursos">Cursos</a>
+    <a href="#ajuda">Onde Buscar Ajuda</a>
+    <a href="#ferramentas">Ferramentas</a>
+    <a href="#ajuda" class="btn btn-primary btn-block">Buscar Ajuda</a>
+  </nav>
+
+  <main id="conteudo">
+
+    <!-- ============================================================
+     HERO
+============================================================ -->
+    <section class="hero">
+      <div class="hero-orb-field" aria-hidden="true">
+        <div class="orb orb-a"></div>
+        <div class="orb orb-b"></div>
+      </div>
+
+      <span class="ghost-word" aria-hidden="true">recomeço</span>
+
+      <div class="container hero-grid">
+        <div class="hero-copy reveal is-visible">
+          <span class="eyebrow">Trabalho de Conclusão de Curso · Etec MCM</span>
+          <h1 id="heroHeadline" data-split>Acolhimento para recomeçar, apoio para vencer.</h1>
+          <p class="lead">Acreditamos que cada vida merece uma nova chance. Oferecemos suporte humanizado, recursos
+            práticos e caminhos claros para a recuperação e reinserção profissional.</p>
+          <div class="hero-actions">
+            <a href="#ferramentas" class="btn btn-primary magnetic">Montar meu currículo</a>
+            <a href="#sobre" class="btn btn-ghost magnetic">Conhecer o projeto</a>
+          </div>
+
+        </div>
+
+        <div class="hero-visual reveal is-visible" aria-hidden="true">
+          <svg viewBox="0 0 420 440" fill="none">
+            <defs>
+              <linearGradient id="pathGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#3D6E93" />
+                <stop offset="1" stop-color="#6F8F76" />
+              </linearGradient>
+              <linearGradient id="sunGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#AFCBDE" />
+                <stop offset="1" stop-color="#DCE9F3" />
+              </linearGradient>
+            </defs>
+            <circle cx="210" cy="170" r="120" fill="url(#sunGrad)" opacity="0.55" />
+            <path
+              d="M40 340 C 120 300, 150 250, 130 190 C 110 130, 160 90, 230 95 C 300 100, 330 150, 300 210 C 270 270, 320 320, 390 300"
+              stroke="url(#pathGrad)" stroke-width="7" stroke-linecap="round" fill="none" />
+            <circle cx="40" cy="340" r="9" fill="#1D3E58" />
+            <circle cx="390" cy="300" r="9" fill="#6F8F76" />
+            <circle cx="230" cy="95" r="5" fill="#3D6E93" />
+          </svg>
+          <div class="hero-badge">
+            <span class="num">100%</span>
+            <span class="txt">focado no acolhimento e na reinserção profissional</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" role="presentation" aria-hidden="true">
+      <div class="marquee-track" id="marqueeTrack">
+        <div class="marquee-item">Acolhimento<span class="dotsep"></span>Respeito<span
+            class="dotsep"></span>Recomeço<span class="dotsep"></span>Dignidade<span
+            class="dotsep"></span>Esperança<span class="dotsep"></span>Pertencimento<span class="dotsep"></span></div>
+        <div class="marquee-item">Acolhimento<span class="dotsep"></span>Respeito<span
+            class="dotsep"></span>Recomeço<span class="dotsep"></span>Dignidade<span
+            class="dotsep"></span>Esperança<span class="dotsep"></span>Pertencimento<span class="dotsep"></span></div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+     SOBRE
+============================================================ -->
+    <section id="sobre" class="band">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">O projeto</span>
+          <h2>Conheça o Restaurar e Curar</h2>
+          <p class="lead">Um ecossistema criado para acolher histórias, restaurar dignidades e apontar novos caminhos
+            profissionais.</p>
+        </div>
+
+        <div class="about-layout">
+          <div class="about-copy reveal">
+            <p>O projeto <strong>Restaurar e Curar</strong> nasce com o propósito de dar visibilidade a pessoas em
+              processo de reabilitação, sensibilizando a sociedade sobre a importância da empatia e do acolhimento —
+              promovendo uma mudança real de mentalidade em relação a quem está se recuperando. Mais do que beneficiar
+              quem vive essa jornada, o projeto contribui para a construção de uma sociedade mais justa e inclusiva.</p>
+            <p>Nossa trajetória começou em 2024, no primeiro ano do Ensino Médio na Etec MCM, e segue até 2026, nosso
+              último ano de escola, culminando na apresentação deste Trabalho de Conclusão de Curso.</p>
+            <p>Criamos este site pensando em boas experiências — esperamos que você se sinta confortável aqui. Seja
+              bem-vindo.</p>
+          </div>
+
+          <figure class="about-figure reveal-img">
+            <img src="assets/images/sobre-acolhimento.png"
+              alt="Duas pessoas conversando com atenção e acolhimento em um espaço iluminado" loading="lazy">
+            <figcaption>Escuta e acolhimento no dia a dia do projeto</figcaption>
+          </figure>
+        </div>
+
+        <div class="pillars reveal-group">
+          <div class="pillar reveal">
+            <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M12 21s-7-4.35-9.5-9C.7 8 2.5 4 6.5 4c2 0 3.4 1 4.5 2.5C12.1 5 13.5 4 15.5 4c4 0 5.8 4 4 8-2.5 4.65-7.5 9-7.5 9z" />
+              </svg></div>
+            <h3>Missão</h3>
+            <p>Promover a conscientização sobre a dependência química, incentivando a empatia, a inclusão social e a
+              reintegração ao mercado de trabalho.</p>
+          </div>
+          <div class="pillar reveal">
+            <div class="icon-tile moss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" />
+              </svg></div>
+            <h3>Valores</h3>
+            <p>Empatia, respeito, inclusão, ética, responsabilidade social, solidariedade e compromisso com a dignidade
+              humana e a igualdade de oportunidades.</p>
+          </div>
+          <div class="pillar reveal">
+            <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v4M12 17v4M3 12h4M17 12h4" />
+                <circle cx="12" cy="12" r="5" />
+              </svg></div>
+            <h3>Objetivo</h3>
+            <p>Reduzir estigmas sociais, apoiando indivíduos e famílias, além de promover conscientização, empatia e
+              inclusão durante a recuperação.</p>
+          </div>
+        </div>
+
+        <div class="media-quote reveal">
+          <div class="media-panel">
+            <video class="media-bg" autoplay muted loop playsinline>
+              <source src="assets/images/Video-restaurar e curar.mp4" type="video/mp4">
+              Seu navegador não suporta vídeos.
+            </video>
+
+            <div class="media-panel-inner">
+              <span class="media-tag">Vídeo do projeto</span>
+            </div>
+          </div>
+
+          <div class="quote-block">
+            <blockquote data-word-reveal>
+              "Acreditamos no potencial inexplorado das pessoas e que o trabalho digno é um pilar fundamental para
+              restabelecer o propósito de vida."
+            </blockquote>
+            <cite>Restaurar e Curar — TCC de Impacto Social</cite>
+          </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+     MERCADO DE TRABALHO
+============================================================ -->
+    <section id="trabalho" class="band band-alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Preparação profissional</span>
+          <h2>Volta ao mercado de trabalho</h2>
+          <p class="lead">Conselhos práticos e diretos, estruturados para impulsionar suas chances na busca pela
+            colocação profissional.</p>
+        </div>
+
+        <div class="grid-3 reveal-group">
+          <div class="card mkt-card reveal">
+            <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                <path d="M14 2v6h6M9 13h6M9 17h6" />
+              </svg></div>
+            <h3>Como montar um currículo</h3>
+            <p>Mantenha a simplicidade. Foque nos dados essenciais de contato, seguidos de sua formação básica e
+              experiências em ordem cronológica decrescente.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Limite o currículo a no máximo 1 página</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Evite preencher com dados pessoais sensíveis</li>
+            </ul>
+          </div>
+
+          <div class="card mkt-card reveal">
+            <div class="icon-tile moss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.42-4.03 8-9 8-1.16 0-2.27-.2-3.28-.55L3 21l1.55-4.72C3.57 15.09 3 13.6 3 12c0-4.42 4.03-8 9-8s9 3.58 9 8z" />
+              </svg></div>
+            <h3>Dicas para entrevistas</h3>
+            <p>A preparação prévia é o segredo. Conheça a empresa contratante antes da conversa e demonstre interesse
+              ativo pelo segmento de atuação.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Treine respostas claras sobre sua trajetória</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Pontualidade é o primeiro cartão de visitas</li>
+            </ul>
+          </div>
+
+          <div class="card mkt-card reveal">
+            <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 8v4l3 2" />
+              </svg></div>
+            <h3>Erros comuns</h3>
+            <p>Muitas vezes pequenos descuidos reduzem suas chances de avanço. Entenda o que deve ser evitado durante os
+              processos de seleção.</p>
+            <ul>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Evite falar mal de experiências anteriores</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 13l4 4L19 7" />
+                </svg>Não minta sobre qualificações técnicas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     GALERIA — scroll horizontal (humanização)
+============================================================ -->
+    <!-- <section class="gallery-band band-alt" aria-label="Galeria de imagens do projeto">
+  <div class="container gallery-head reveal">
+    <span class="eyebrow">Rostos do recomeço</span>
+    <h2>Momentos reais de apoio</h2>
+  </div>
+  <div class="gallery-scroller" id="galleryScroller">
+    <figure class="gallery-item">
+      <img src="assets/images/galeria-entrevista.png" alt="Aperto de mãos em uma entrevista de emprego" loading="lazy">
+      <figcaption>Novas oportunidades de trabalho</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="assets/images/galeria-curso.png" alt="Adultos participando de um curso profissionalizante" loading="lazy">
+      <figcaption>Cursos profissionalizantes</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="assets/images/galeria-grupo.png" alt="Grupo de acolhimento reunido em roda de conversa" loading="lazy">
+      <figcaption>Grupos de acolhimento</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="assets/images/galeria-familia.png" alt="Família se abraçando com carinho ao ar livre" loading="lazy">
+      <figcaption>Apoio familiar</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="assets/images/galeria-atendimento.png" alt="Psicólogo em atendimento acolhedor" loading="lazy">
+      <figcaption>Atendimento humanizado</figcaption>
+    </figure>
+  </div>
+  <p class="gallery-hint">Arraste para o lado para ver mais &rarr;</p>
+</section> -->
+
+    <!-- ============================================================
+     CURSOS
+============================================================ -->
+    <section id="cursos" class="band">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Capacitação gratuita</span>
+          <h2>Cursos gratuitos recomendados</h2>
+          <p class="lead">Capacite-se gratuitamente através de instituições renomadas e certificadas do mercado
+            nacional.</p>
+        </div>
+
+        <div class="filter-tabs" role="group" aria-label="Filtrar cursos por categoria" id="courseFilters">
+          <button class="filter-tab active" data-filter="todos">Todos</button>
+          <button class="filter-tab" data-filter="vendas">Empreendedorismo &amp; Vendas</button>
+          <button class="filter-tab" data-filter="tech">Tecnologia &amp; Escritório</button>
+          <button class="filter-tab" data-filter="industria">Indústria &amp; Serviços</button>
+        </div>
+
+        <div class="grid-4 reveal-group" id="courseGrid">
+          <div class="card course-card reveal" data-category="vendas">
+            <span class="org">Sebrae</span>
+            <h3>Aprender a Empreender</h3>
+            <p>Desenvolva habilidades essenciais de planejamento, marketing e organização financeira para criar o seu
+              próprio negócio.</p>
+            <a href="https://www.sebrae.com.br" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Acessar no
+              Sebrae</a>
+          </div>
+          <div class="card course-card reveal" data-category="tech">
+            <span class="org">Fundação Bradesco</span>
+            <h3>Fundamentos de TI</h3>
+            <p>Introdução completa à tecnologia da informação, preparando para a operação em escritórios e assistência
+              técnica básica.</p>
+            <a href="https://www.ev.org.br" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Acessar Fundação
+              Bradesco</a>
+          </div>
+          <div class="card course-card reveal" data-category="industria">
+            <span class="org">Senai</span>
+            <h3>Metrologia Básica</h3>
+            <p>Passo inicial para quem deseja ingressar no mercado industrial, voltado para qualidade técnica e leitura
+              de medições.</p>
+            <a href="https://www.portaldaindustria.com.br/senai/" target="_blank" rel="noopener"
+              class="btn btn-ghost btn-sm">Acessar no Senai</a>
+          </div>
+          <div class="card course-card reveal" data-category="vendas">
+            <span class="org">FGV</span>
+            <h3>Finanças Pessoais</h3>
+            <p>Domine os conceitos básicos de planejamento econômico pessoal para estabilizar suas contas e iniciar
+              poupanças.</p>
+            <a href="https://portal.fgv.br" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">Acessar FGV</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     HISTÓRIAS
+============================================================ -->
+    <section id="historias" class="band band-alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Impacto real</span>
+          <h2>Histórias de superação</h2>
+          <p class="lead">Pessoas reais que encontraram apoio, superaram as adversidades e hoje trilham novas
+            trajetórias profissionais.</p>
+        </div>
+
+        <div class="grid-2 reveal-group">
+          <div class="card story-card reveal">
+            <div class="story-top">
+              <span class="avatar"><img src="assets/images/story-ricardo.png" alt="Retrato de Ricardo Souza"
+                  loading="lazy"></span>
+              <div>
+                <div class="story-name">Ricardo Souza</div>
+                <div class="story-meta">Apoiado em 2024 · Hoje Técnico em Mecatrônica</div>
+              </div>
+            </div>
+            <blockquote>"A dependência me tirou tudo, inclusive a confiança no futuro. No projeto, além de apoio humano
+              e acolhimento em momentos de crise, encontrei os guias para voltar aos estudos. Fazer o meu primeiro
+              currículo aqui mudou o meu rumo."</blockquote>
+          </div>
+          <div class="card story-card reveal">
+            <div class="story-top">
+              <span class="avatar"><img src="assets/images/story-mariana.png" alt="Retrato de Mariana Costa"
+                  loading="lazy"></span>
+              <div>
+                <div class="story-name">Mariana Costa</div>
+                <div class="story-meta">Apoiada em 2025 · Empreendedora Social</div>
+              </div>
+            </div>
+            <blockquote>"Os familiares sofrem juntos e muitas vezes não sabem onde buscar ajuda qualificada. Através do
+              mapa de assistência, encontrei o CREAS da minha região e, por meio dos cursos indicados, iniciei minha
+              capacitação em vendas."</blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     ONDE BUSCAR AJUDA
+============================================================ -->
+    <section id="ajuda" class="band">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Rede de apoio</span>
+          <h2>Onde buscar ajuda</h2>
+          <p class="lead">Localize redes públicas gratuitas de assistência social, saúde e capacitação técnica próximas
+            à sua região. Filtre para identificar qual infraestrutura pública melhor atende sua necessidade imediata de
+            apoio ou saúde.</p>
+        </div>
+
+        <div class="filter-tabs" role="group" aria-label="Filtrar centros de apoio" id="helpFilters">
+          <button class="filter-tab active" data-filter="todos">Todos os Centros de Apoio</button>
+          <button class="filter-tab" data-filter="caps">CAPS</button>
+          <button class="filter-tab" data-filter="cras">CRAS / CREAS</button>
+          <button class="filter-tab" data-filter="acolhimento">Acolhimento &amp; Albergues</button>
+        </div>
+
+        <div class="grid-3 reveal-group" id="helpGrid">
+          <div class="card help-card reveal" data-category="caps">
+            <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M19 14c1.5-1.5 2-3 2-4.5A4.5 4.5 0 0016.5 5c-1.7 0-3 .9-4.5 2.5C10.5 5.9 9.2 5 7.5 5A4.5 4.5 0 003 9.5c0 1.5.5 3 2 4.5l7 7z" />
+              </svg></div>
+            <h3>Centro de Atenção Psicossocial (CAPS)</h3>
+            <p>Serviço de saúde pública do SUS dedicado ao tratamento e reabilitação psicossocial de pessoas que
+              enfrentam sofrimento decorrente do uso prejudicial de substâncias.</p>
+            <div class="tags"><span class="help-tag">CAPS III</span></div>
+            <a href="https://aplicacoes.mds.gov.br/sagi/mops/" target="_blank" rel="noopener"
+              class="btn btn-ghost btn-sm">Buscar unidade oficial</a>
+          </div>
+          <div class="card help-card reveal" data-category="cras">
+            <div class="icon-tile moss"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6" />
+              </svg></div>
+            <h3>CRAS / CREAS — Assistência Social</h3>
+            <p>Portas de entrada da rede socioassistencial: orientação a famílias, encaminhamentos e acompanhamento de
+              casos de maior vulnerabilidade social.</p>
+            <div class="tags"><span class="help-tag">CREAS Municipal</span></div>
+            <a href="https://aplicacoes.mds.gov.br/sagi/mops/" target="_blank" rel="noopener"
+              class="btn btn-ghost btn-sm">Buscar unidade oficial</a>
+          </div>
+          <div class="card help-card reveal" data-category="acolhimento">
+            <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12l9-9 9 9M5 10v10h14V10" />
+              </svg></div>
+            <h3>Centros de Acolhimento &amp; Albergues</h3>
+            <p>Acolhida provisória, alimentação e apoio para pessoas em situação de rua ou rompimento de vínculos
+              familiares, com foco em reconstrução de autonomia.</p>
+            <div class="tags"><span class="help-tag">Casa de Passagem</span></div>
+            <a href="https://aplicacoes.mds.gov.br/sagi/mops/" target="_blank" rel="noopener"
+              class="btn btn-ghost btn-sm">Buscar unidade oficial</a>
+          </div>
+        </div>
+
+        <!-- Como funciona o atendimento — 3 passos -->
+        <div class="steps-block reveal">
+          <h3>Como funciona o atendimento?</h3>
+          <p>O acesso à rede pública de apoio é gratuito e mais simples do que parece. Veja os três passos.</p>
+          <div class="steps-grid">
+            <div class="step">
+              <div class="step-num">1</div>
+              <h4>Escolha o serviço</h4>
+              <p>Use o filtro e o mapa abaixo para identificar a unidade mais próxima e adequada à sua necessidade.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <h4>Vá até a unidade</h4>
+              <p>Compareça no endereço indicado com um documento. Não é preciso agendamento nem encaminhamento prévio.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <h4>Receba o acolhimento</h4>
+              <p>Uma equipe multiprofissional acolhe você e a sua família e define, em conjunto, os próximos passos do
+                cuidado.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mapa interativo da rede de apoio -->
+        <div class="map-wrap reveal">
+          <div class="map-head">
+            <h3>Mapa da rede de apoio</h3>
+            <div class="map-legend" aria-hidden="true">
+              <span><i class="legend-dot caps"></i>CAPS / CAPS AD</span>
+              <span><i class="legend-dot cras"></i>CRAS / CREAS</span>
+              <span><i class="legend-dot acolhimento"></i>Acolhimento / Albergues</span>
+            </div>
+          </div>
+
+          <!-- Localização inteligente: buscar ajuda perto de mim -->
+          <div class="geo-bar" id="geoBar">
+            <button type="button" class="btn btn-primary btn-sm geo-btn" id="geoLocateBtn">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3" />
+                <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                <circle cx="12" cy="12" r="8" />
+              </svg>
+              <span>Buscar ajuda perto de mim</span>
+            </button>
+            <br>
+            <form class="geo-search" id="geoSearchForm" role="search" hidden>
+              <label class="sr-only" for="geoSearchInput">Buscar por cidade, bairro, CEP ou endereço</label>
+              <input type="text" id="geoSearchInput" class="geo-input" placeholder="Cidade, bairro, CEP ou endereço…"
+                autocomplete="off">
+              <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+            </form>
+
+            <p class="geo-status" id="geoStatus" role="status" aria-live="polite"></p>
+          </div>
+
+          <div id="helpMap" role="application" aria-label="Mapa interativo com centros de apoio da região"></div>
+
+          <!-- Lista de locais ordenada por proximidade -->
+          <div class="geo-results" id="geoResults" aria-live="polite"></div>
+        </div>
+
+        <p style="margin-top:1.6rem; font-size:.85rem; color:var(--ink-faint);">Apoio integrado com o Sistema Único de
+          Assistência Social (SUAS).</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     FERRAMENTAS — QUIZ
+============================================================ -->
+    <section id="ferramentas" class="band band-alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Ferramenta interativa</span>
+          <h2>Descubra sua área ideal</h2>
+          <p class="lead">Responda a 4 perguntas rápidas e descubra quais profissões e cursos mais combinam com o seu
+            perfil.</p>
+        </div>
+
+        <div class="tool-panel reveal" style="max-width:680px; margin-inline:auto;">
+          <div class="quiz-panel">
+
+            <div class="quiz-progress-label" id="quizProgressLabel">Pergunta 1 de 4</div>
+            <div class="quiz-bar">
+              <div class="quiz-bar-fill" id="quizBarFill"></div>
+            </div>
+
+            <div data-quiz-step="1" class="active">
+              <div class="quiz-question">
+                <h3>O que você prefere no seu ambiente de trabalho ou rotina?</h3>
+                <div class="quiz-options">
+                  <button class="quiz-option" data-area="vendas"><span class="bullet"></span>Conversar, negociar e
+                    planejar novos projetos</button>
+                  <button class="quiz-option" data-area="tech"><span class="bullet"></span>Resolver problemas com
+                    sistemas e organização digital</button>
+                  <button class="quiz-option" data-area="industria"><span class="bullet"></span>Trabalhar com as mãos,
+                    produção e processos técnicos</button>
+                </div>
+              </div>
+            </div>
+
+            <div data-quiz-step="2">
+              <div class="quiz-question">
+                <h3>Qual dessas tarefas te dá mais satisfação?</h3>
+                <div class="quiz-options">
+                  <button class="quiz-option" data-area="vendas"><span class="bullet"></span>Vender uma ideia ou produto
+                    em que você acredita</button>
+                  <button class="quiz-option" data-area="tech"><span class="bullet"></span>Montar uma planilha ou
+                    organizar informações</button>
+                  <button class="quiz-option" data-area="industria"><span class="bullet"></span>Ver algo sendo
+                    construído ou consertado</button>
+                </div>
+              </div>
+            </div>
+
+            <div data-quiz-step="3">
+              <div class="quiz-question">
+                <h3>Diante de um desafio novo, você prefere...</h3>
+                <div class="quiz-options">
+                  <button class="quiz-option" data-area="vendas"><span class="bullet"></span>Buscar uma solução
+                    criativa, conversando com outras pessoas</button>
+                  <button class="quiz-option" data-area="tech"><span class="bullet"></span>Pesquisar e aprender uma
+                    ferramenta nova</button>
+                  <button class="quiz-option" data-area="industria"><span class="bullet"></span>Testar na prática, com
+                    as mãos</button>
+                </div>
+              </div>
+            </div>
+
+            <div data-quiz-step="4">
+              <div class="quiz-question">
+                <h3>O que mais te motiva a voltar ao mercado de trabalho?</h3>
+                <div class="quiz-options">
+                  <button class="quiz-option" data-area="vendas"><span class="bullet"></span>Ter meu próprio negócio ou
+                    uma renda extra</button>
+                  <button class="quiz-option" data-area="tech"><span class="bullet"></span>Uma rotina estável em
+                    escritório ou suporte técnico</button>
+                  <button class="quiz-option" data-area="industria"><span class="bullet"></span>Uma profissão técnica
+                    reconhecida e valorizada</button>
+                </div>
+              </div>
+            </div>
+
+            <div data-quiz-step="result">
+              <div class="quiz-result">
+                <div class="icon-tile" id="quizResultIcon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M12 21s-7-4.35-9.5-9C.7 8 2.5 4 6.5 4c2 0 3.4 1 4.5 2.5C12.1 5 13.5 4 15.5 4c4 0 5.8 4 4 8-2.5 4.65-7.5 9-7.5 9z" />
+                  </svg></div>
+                <h3 id="quizResultTitle">Seu perfil combina com Empreendedorismo &amp; Vendas</h3>
+                <p id="quizResultText">Você tem facilidade para se comunicar, negociar e planejar. Considere explorar
+                  cursos de empreendedorismo e vendas como ponto de partida.</p>
+                <div class="quiz-result-card" id="quizResultCard">
+                  <span class="org">Sebrae</span>
+                  <h4>Aprender a Empreender</h4>
+                  <p>Desenvolva habilidades essenciais de planejamento, marketing e organização financeira.</p>
+                </div>
+                <div>
+                  <button class="btn btn-ghost quiz-restart" id="quizRestart">Refazer o teste</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="quiz-nav" id="quizNav">
+              <button class="link-btn" id="quizBack" disabled>← Voltar</button>
+              <span style="font-size:.8rem; color:var(--ink-faint);">Toque em uma opção para continuar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============================================================
+         FERRAMENTAS — MONTE SEU CURRÍCULO
+    ============================================================ -->
+        <div style="margin-top:clamp(4rem,7vw,6rem);">
+          <div class="section-head reveal" style="max-width:680px;">
+            <span class="eyebrow">Ferramenta integrada</span>
+            <h2>Monte seu currículo em minutos</h2>
+            <p class="lead">Preencha os campos abaixo de maneira simples e confira a visualização do seu documento ao
+              lado, pronta para impressão.</p>
+          </div>
+
+          <div class="tool-panel reveal">
+            <div class="builder">
+              <form class="builder-form" id="resumeForm">
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="rName">Nome completo</label>
+                    <input type="text" id="rName" placeholder="Ex.: Ana Beatriz Lima" autocomplete="name">
+                  </div>
+                  <div class="field">
+                    <label for="rEmail">E-mail para contato</label>
+                    <input type="email" id="rEmail" placeholder="voce@email.com" autocomplete="email">
+                  </div>
+                  <div class="field">
+                    <label for="rPhone">Telefone</label>
+                    <input type="tel" id="rPhone" placeholder="(00) 00000-0000" autocomplete="tel">
+                  </div>
+                  <div class="field">
+                    <label for="rCity">Cidade - UF</label>
+                    <input type="text" id="rCity" placeholder="Ex.: Suzano - SP" autocomplete="address-level2">
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="rObjective">Objetivo profissional</label>
+                  <textarea id="rObjective"
+                    placeholder="Ex.: Atuar na área administrativa, contribuindo com organização e atendimento."></textarea>
+                </div>
+                <div class="field">
+                  <label for="rEducation">Formação acadêmica</label>
+                  <textarea id="rEducation" placeholder="Ex.: Ensino Médio completo — Etec MCM, 2026"></textarea>
+                </div>
+                <div class="field">
+                  <label for="rExperience">Experiência profissional</label>
+                  <textarea id="rExperience" placeholder="Ex.: Auxiliar de produção — Empresa X (2023–2024)"></textarea>
+                </div>
+                <div class="field">
+                  <label for="rCourses">Cursos &amp; habilidades</label>
+                  <textarea id="rCourses" placeholder="Ex.: Fundamentos de TI — Fundação Bradesco"></textarea>
+                </div>
+              </form>
+
+              <div class="builder-preview-wrap">
+                <div class="resume-sheet" id="resumeSheet" aria-live="polite">
+                  
+                  <div>
+                    <h3 id="pName">Nome do Candidato</h3>
+                    <div class="resume-contact">
+                      <span>
+                        <i class="fa-solid fa-phone"></i>
+                        <span id="pPhone">(00) 00000-0000</span>
+                      </span>
+
+                      <span>
+                        <i class="fa-solid fa-envelope"></i>
+                        <span id="pEmail">candidato@email.com</span>
+                      </span>
+
+                      <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span id="pCity">Cidade - UF</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="resume-block">
+                    <h4>Objetivo</h4>
+                    <p id="pObjective">Objetivo profissional ou de carreira.</p>
+                  </div>
+                  <div class="resume-block">
+                    <h4>Formação acadêmica</h4>
+                    <p id="pEducation">Formação acadêmica inserida no formulário ao lado.</p>
+                  </div>
+                  <div class="resume-block">
+                    <h4>Experiência profissional</h4>
+                    <p id="pExperience">Experiência profissional demonstrada aqui no espaço reservado.</p>
+                  </div>
+                  <div class="resume-block">
+                    <h4>Cursos &amp; qualificações</h4>
+                    <p id="pCourses">Idiomas, informática ou cursos profissionalizantes.</p>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-primary" id="printResume">
+                  Imprimir ou salvar em PDF
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     MURAL DA ESPERANÇA
+============================================================ -->
+    <section id="mural" class="band">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Comunidade</span>
+          <h2>Mural da esperança</h2>
+          <p class="lead">Deixe uma mensagem inspiradora para encorajar aqueles que estão trilhando seus próprios
+            recomeços.</p>
+        </div>
+
+        <form class="mural-form reveal" id="muralForm">
+          <div class="field full">
+            <label for="muralMsg">Sua mensagem</label>
+            <textarea id="muralMsg" required placeholder="Escreva algumas palavras de encorajamento..."></textarea>
+          </div>
+          <div class="field">
+            <label for="muralName">Seu nome (ou deixe em branco para Anônimo)</label>
+            <input type="text" id="muralName" placeholder="Ex.: Camila S.">
+          </div>
+          <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+        </form>
+
+        <div class="mural-grid" id="muralGrid">
+          <div class="mural-card">
+            <p>A estrada do recomeço é longa, mas a paisagem lá na frente compensa cada passo dado no dia de hoje.</p>
+            <cite>— Cláudio R.</cite>
+          </div>
+          <div class="mural-card">
+            <p>Não desista de você. Você é muito mais forte do que qualquer uma das suas piores quedas.</p>
+            <cite>— Ana Julia</cite>
+          </div>
+          <div class="mural-card">
+            <p>A capacitação e o estudo abrem portas que pareciam trancadas para sempre. Confie no seu processo.</p>
+            <cite>— Professor Santos</cite>
+          </div>
+          <div class="mural-card">
+            <p>O primeiro passo já foi dado hoje, ao buscar informação. Continue firme nessa busca diária.</p>
+            <cite>— Anônimo</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+     FOOTER
+============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <a href="#" class="logo" aria-label="Restaurar e Curar, página inicial">
+              <img
+                src="assets/images/Logotipo_Iniciais_do_Nome_Profissional_Minimalista_em_Preto_e_Branco-removebg-preview.png"
+                alt="Logo Restaurar e Curar" class="logo-mark">
+              <span>Restaurar e Curar</span>
+            </a>
+          </div>
+          <p>Website de conscientização social e capacitação prática para reinserção de pessoas recuperadas no
+            ecossistema do mercado de trabalho.</p>
+          <a href="https://www.instagram.com/restaurarecurar_/" target="_blank" rel="noopener" class="footer-social">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" />
+            </svg>
+            @restaurarecurar_
+          </a>
+        </div>
+        <div class="footer-credits">
+          <h4>Créditos de desenvolvimento</h4>
+          <p>Website institucional acadêmico elaborado como Trabalho de Conclusão de Curso (TCC) da Classe 3B — Ano
+            2026.</p>
+          <p style="margin-top:.8rem;">Este website foi desenvolvido por Laura Reis, aluna da turma 2ºC, com o
+            objetivo de auxiliar os estudantes do 3ºB em sua preparação acadêmica</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Restaurar e Curar</span>
+        <span>Etec MCM</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Scripts do projeto -->
+  <script src="js/map.js" defer></script>
+  <script src="js/filters.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/main.js" defer></script>
+
+</body>
+
+</html>
